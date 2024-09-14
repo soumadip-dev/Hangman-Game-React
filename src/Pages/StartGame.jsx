@@ -1,8 +1,15 @@
-function startGame() {
+import { Link } from "react-router-dom";
+import TextInputFormContainer from "../Components/TextInputForm/TextInputFormContainer.jsx";
+function StartGame() {
   // <> it is called react fragment -> It helps us to multiple element in single parent,
-  <>
-    <h1>Start</h1>
-    
-  </>;
+  return (
+    <>
+      <h1>Start</h1>
+      <TextInputFormContainer />
+      <Link to="/play" className="text-blue-500">
+        Play Game Link
+      </Link>
+    </>
+  );
 }
-export default startGame;
+export default StartGame;
