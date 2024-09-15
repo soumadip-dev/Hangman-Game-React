@@ -1,32 +1,38 @@
 import { useState } from "react";
 import TextInputForm from "./TextInputForm.jsx";
 import { useNavigate } from "react-router-dom";
+
 function TextInputFormContainer() {
-  //react hooks
+  // React hooks
   const [inputType, setInputType] = useState("password");
-  const [value, setvalue] = useState("");
-  const navigate = useNavigate(); // This is a hook that returns a navigate function
+  const [value, setValue] = useState("");
+  const navigate = useNavigate(); // This hook returns a function to navigate programmatically
 
   function handleFormSubmit(event) {
     event.preventDefault();
     console.log(`Form Submitted ${value}`);
     if (value) {
-      // if we have something in value then we want to go to the play page
-      navigate("/play");
+      // Navigate to the play page with the value passed in the state
+      navigate("/play", { state: { wordSelected: value } });
+
+      // Optionally, you could navigate using query parameters (not used for this game)
+      // navigate(`/play?text=${value}`);
+
+      // Alternatively, you could navigate using path parameters (requires route change in App.jsx and fetching from useParams() hook in PlayGame)
+      // navigate(`/play/${value}`);
     }
   }
+
   function handleTextInputChange(event) {
     console.log(event.target.value);
-    setvalue(event.target.value);
+    setValue(event.target.value);
   }
+
   function handleShowHideClick() {
     console.log("Show/Hide Clicked");
-    if (inputType === "password") {
-      setInputType("text");
-    } else {
-      setInputType("password");
-    }
+    setInputType(inputType === "password" ? "text" : "password");
   }
+
   return (
     <TextInputForm
       inputType={inputType}
@@ -36,4 +42,5 @@ function TextInputFormContainer() {
     />
   );
 }
+
 export default TextInputFormContainer;

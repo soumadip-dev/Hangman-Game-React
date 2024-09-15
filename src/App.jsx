@@ -11,6 +11,8 @@ function App() {
       <Routes>
         <Route path="/start" element={<StartGame />} />
         <Route path="/play" element={<PlayGame />} />
+        {/* Path Param */}
+        {/* <Route path="/play/:text" element={<PlayGame />} /> */}
       </Routes>
       {/* <TextInputFormContainer /> */}
     </div>
