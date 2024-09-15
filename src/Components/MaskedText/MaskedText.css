@@ -1,0 +1,12 @@
+/* MaskedText.css */
+
+/* Custom styling for the masked text */
+.masked-letter {
+  color: #0c6cb1;
+  font-size: 1.9rem; /* Increase the font size */
+  font-family: "Shadows Into Light Two", cursive;
+  letter-spacing: 0.9rem;
+}
+
+/* Importing Google font */
+@import url("https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&display=swap");

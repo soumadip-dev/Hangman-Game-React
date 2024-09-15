@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&display=swap");
+
+.letter-buttons-container {
+  display: grid;
+  grid-template-columns: repeat(10, 3rem); /* 10 buttons in the first row */
+  gap: 0.25rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.second-row {
+  grid-template-columns: repeat(9, 3rem); /* 9 buttons in the second row */
+}
+
+.third-row {
+  grid-template-columns: repeat(7, 3rem); /* 7 buttons in the third row */
+}
+
+.letter-button {
+  height: 3rem;
+  width: 3rem;
+  font-size: 1.9rem;
+  font-family: "Shadows Into Light Two", cursive;
+  color: blue;
+  border: none;
+  background-color: transparent;
+  font-weight: bold;
+  line-height: 3rem;
+  text-align: center;
+}
+
+.unselected {
+  color: #0c6cb1;
+}
+
+.correct-guess {
+  color: green;
+  position: relative;
+}
+
+.correct-guess::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 2px solid green;
+  border-radius: 50%;
+  /* z-index: -1; */
+}
+
+.wrong-guess {
+  color: red;
+  position: relative;
+}
+
+.wrong-guess::after {
+  content: "X";
+  color: red;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  font-weight: bold;
+}

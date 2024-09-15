@@ -1,5 +1,4 @@
 /**
- *
  * @param {The word that is given as word and is expected to guessed } originalWord
  * @param {Letters which are gassed by the user already} guessedLetters
  */
