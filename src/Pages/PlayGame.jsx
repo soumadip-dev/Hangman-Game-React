@@ -3,6 +3,7 @@
 
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
+import MaskedText from "../Components/MaskedText/MaskedText.jsx";
 
 function PlayGame() {
   // Fetch the value using query params using URL (Although it is not helpful for our game)
@@ -19,6 +20,7 @@ function PlayGame() {
   return (
     <>
       <h1>Play</h1>
+      <MaskedText text={state.wordSelected} guessedLetters={["H", "R"]} />
       <Link to="/start" className="text-blue-500">
         Start Game Link
       </Link>
