@@ -7,6 +7,7 @@ import MaskedText from "../Components/MaskedText/MaskedText.jsx";
 import { useState } from "react";
 import LetterButtons from "../Components/LetterButtons/LetterButtons.jsx";
 import HangMan from "../Components/HangMan/HangMan";
+import Button from "../Components/Button/Button.jsx";
 
 function PlayGame() {
   // Fetch the value using query params using URL (Although it is not helpful for our game)
@@ -43,35 +44,48 @@ function PlayGame() {
   }
 
   return (
-    <div className="bg-gradient-to-br from-blue-100 via-purple-200 to-pink-300 min-h-screen flex items-center justify-center p-[90px]">
-      <div className="bg-gradient-to-r from-teal-100 to-cyan-200 shadow-lg rounded-lg flex w-[90%] h-[80vh] max-w-screen-xl overflow-hidden">
-        {/* <h1>Play Game {state.wordSelected} </h1> */}
-        {/* Left Side: MaskedText and LetterButtons */}
-        <div className="w-1/2 p-[4rem] border-r border-gray-300 flex flex-col items-center bg-gradient-to-r from-white to-gray-100">
-          {/* MaskedText Section */}
-          <div className="w-full mb-14 flex items-center justify-center p-4 bg-white rounded-lg shadow-lg">
-            <MaskedText
-              text={state.wordSelected}
-              guessedLetters={guessedLetters}
-            />
+    <div className="bg-gradient-to-br from-blue-100 via-purple-200 to-pink-300 min-h-screen flex flex-col items-center justify-center p-[50px]">
+      <h1 className="text-4xl font-bold text-purple-600 mb-8 tracking-wide">
+        Play Game
+      </h1>
+      {state?.wordSelected && (
+        <div className="bg-gradient-to-r from-teal-100 to-cyan-200 shadow-lg rounded-lg flex w-[90%] h-[80vh] max-w-screen-xl overflow-hidden">
+          {/* Left Side: MaskedText and LetterButtons */}
+          <div className="w-1/2 p-[4rem] border-r border-gray-300 flex flex-col items-center bg-gradient-to-r from-white to-gray-100">
+            {/* MaskedText Section */}
+            <div className="w-full mb-14 flex items-center justify-center p-4 bg-white rounded-lg shadow-lg">
+              <MaskedText
+                text={state.wordSelected}
+                guessedLetters={guessedLetters}
+              />
+            </div>
+            {/* LetterButtons Section */}
+            <div className="w-full mt-[7rem] flex flex-col items-center mb-8">
+              <LetterButtons
+                text={state.wordSelected}
+                guessedLetters={guessedLetters}
+                onLetterClick={handleLetterClick}
+              />
+            </div>
+            <div className="mt-8 flex flex-col items-center">
+              <Link to="/">
+                <Button
+                  text="Home"
+                  styleType="success"
+                  className="w-3/4 max-w-xs"
+                />
+              </Link>
+            </div>
           </div>
-          {/* LetterButtons Section */}
-          <div className="w-full mt-[7rem] flex flex-col items-center">
-            <LetterButtons
-              text={state.wordSelected}
-              guessedLetters={guessedLetters}
-              onLetterClick={handleLetterClick}
-            />
+          {/* Right Side: HangMan */}
+          <div className="w-1/2 p-6 flex items-center justify-center bg-white">
+            <HangMan step={step} />
           </div>
-        </div>
-        {/* Right Side: HangMan */}
-        <div className="w-1/2 p-6 flex items-center justify-center bg-white">
-          <HangMan step={step} />
-        </div>
-        {/* <Link to="/start" className="text-blue-400">
+          {/* <Link to="/start" className="text-blue-400">
         Start Game Link
       </Link> */}
-      </div>
+        </div>
+      )}
     </div>
   );
 }
